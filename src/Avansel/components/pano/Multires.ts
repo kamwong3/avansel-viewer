@@ -1,7 +1,7 @@
 import { Group, Mesh, Vector2, Raycaster, PerspectiveCamera, Vector3 } from 'three'
 import { createSide, updateSide, deleteSide } from './common/Side.js'
 import { tilesFor } from '../utils'
-import { createCube } from './common/cube'
+import { createCube } from './common/Cube'
 import { pano } from '../../config.json'
 import Controls from '../../systems/Controls.js'
 

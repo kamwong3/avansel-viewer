@@ -1,5 +1,5 @@
-import Camera from "../Components/Camera";
-import Renderer from "./renderer";
+import Camera from "../components/Camera";
+import Renderer from "./Renderer";
 
 export default class Resizer {
 

@@ -1,7 +1,7 @@
 
 import { MathUtils } from 'three'
-import Camera from '../Components/Camera'
-import { normLng } from '../Components/utils'
+import Camera from '../components/Camera'
+import { normLng } from '../components/utils'
 import { controls } from '../config.json'
 
 import { CameraPosition } from '../Types'

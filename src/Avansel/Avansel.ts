@@ -1,12 +1,12 @@
-import Renderer from './systems/renderer'
+import Renderer from './systems/Renderer'
 import Loop from './systems/Loop'
 import Controls from './systems/Controls'
 import Resizer from './systems/Resizer'
 
-import Camera from './Components/Camera'
-import Sphere from './Components/Pano/Sphere'
-import Scene from './Components/Scene'
-import Pano from './Components/Pano/Pano'
+import Camera from './components/Camera'
+import Sphere from './components/pano/Sphere'
+import Scene from './components/Scene'
+import Pano from './components/pano/Pano'
 
 //import { createPreview } from './components/pano/preview';
 //import { MultiResPano } from './components/pano/MultiResPano';

@@ -1,8 +1,8 @@
 import { Clock, PerspectiveCamera, Scene as ThreeScene, WebGLRenderer } from 'three';
-import Camera from '../Components/Camera';
-import Scene from '../Components/Scene';
+import Camera from '../components/Camera';
+import Scene from '../components/Scene';
 import Controls from './Controls';
-import Renderer from './renderer';
+import Renderer from './Renderer';
 
 const clock = new Clock();
 

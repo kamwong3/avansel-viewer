@@ -1,6 +1,6 @@
 import { MathUtils } from 'three';
-import { pano } from '../config.json'
-
+const config = require('../config.json');
+const pano = config.pano;
 
 interface AxisBounds {
     min: number,

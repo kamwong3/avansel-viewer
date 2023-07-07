@@ -1,6 +1,7 @@
 
 import { BoxGeometry, Mesh, MeshBasicMaterial, BackSide } from 'three';
-import { pano } from '../../../config.json'
+const config = require('../../../config.json')
+const pano = config.pano;
 
 function createCube(): Mesh {
     const boxSize = pano.tileBase + pano.maxLevels + 2

@@ -2,9 +2,9 @@
 import { MathUtils } from 'three'
 import Camera from '../components/Camera'
 import { normLng } from '../components/utils'
-import { controls } from '../config.json'
-
 import { CameraPosition } from '../Types'
+const config = require('../config.json');
+const controls = config.controls;
 
 enum TouchType { Touch, Zoom }
 

@@ -1,5 +1,6 @@
 import { MathUtils, PerspectiveCamera } from 'three'
-import { camera } from '../config.json'
+const config = require('../config.json');
+const camera = config.camera;
 const { near, far, fov } = camera
 
 export default class Camera {
@@ -13,6 +14,10 @@ export default class Camera {
     this.tick = (delta: number) => {
       console.log('camera tick')
     }
+  }
+
+  setCamera(givenCamera: PerspectiveCamera){
+    this.instance = givenCamera
   }
 
   setAspect(aspect: number){

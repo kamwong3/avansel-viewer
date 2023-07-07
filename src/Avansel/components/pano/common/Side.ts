@@ -1,8 +1,9 @@
 
 import { Group, Material, MathUtils, Mesh, MeshBasicMaterial, Texture } from 'three';
 import { createTile } from './Tile';
-import { pano } from '../../../config.json'
 import { AbortFunction } from '../../../Types';
+const config = require('../../../config.json')
+const pano = config.pano;
 
 const sidePosition = (side: string, level: number) => {
     const tileBaseSize = pano.tileBase + pano.maxLevels - level

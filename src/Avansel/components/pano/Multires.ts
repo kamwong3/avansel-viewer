@@ -2,8 +2,9 @@ import { Group, Mesh, Vector2, Raycaster, PerspectiveCamera, Vector3 } from 'thr
 import { createSide, updateSide, deleteSide } from './common/Side.js'
 import { tilesFor } from '../utils'
 import { createCube } from './common/Cube'
-import { pano } from '../../config.json'
 import Controls from '../../systems/Controls.js'
+const config = require('../../config.json')
+const pano = config.pano;
 
 class Multires {
 

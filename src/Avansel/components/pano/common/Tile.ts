@@ -1,7 +1,8 @@
 
 import { PlaneGeometry, Mesh, MeshBasicMaterial, DoubleSide, ImageLoader, Texture, Loader, Material } from 'three';
-import { pano } from '../../../config.json'
 import { AbortFunction } from '../../../Types';
+const config = require('../../../config.json')
+const pano = config.pano;
 
 class TextureLoader extends Loader{
 

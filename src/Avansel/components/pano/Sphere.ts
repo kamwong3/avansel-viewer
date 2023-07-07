@@ -1,6 +1,7 @@
 import { SphereGeometry, Mesh, MeshBasicMaterial, TextureLoader, Texture } from 'three'
-import { pano } from '../../config.json'
 import Controls from '../../systems/Controls'
+const config = require('../../config.json')
+const pano = config.pano;
 
 export default class Sphere{
 

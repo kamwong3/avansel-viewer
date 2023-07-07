@@ -35,8 +35,8 @@ class Multires {
     }
     this.cube = createCube()
 
-    this.controls.canvas.addEventListener( 'cameraMove', this.onCameraMove.bind(this) )
-    this.controls.canvas.addEventListener( 'fovChanged', this.onFovChanged.bind(this) )
+    //this.controls.canvas.addEventListener( 'cameraMove', this.onCameraMove.bind(this) )
+    //this.controls.canvas.addEventListener( 'fovChanged', this.onFovChanged.bind(this) )
   }
 
   get(): Group{
@@ -157,13 +157,19 @@ class Multires {
     }
   }
 
+  // onCameraMove(e: Event){
+  //   this.updatePosition()
+  // }
 
+  // onFovChanged(e: Event){
+  //   this.updatePosition()
+  // }
 
-  onCameraMove(e: Event){
+  onCameraMove(e: Object){
     this.updatePosition()
   }
 
-  onFovChanged(e: Event){
+  onFovChanged(e: Object){
     this.updatePosition()
   }
 

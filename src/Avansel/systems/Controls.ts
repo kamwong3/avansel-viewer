@@ -1,14 +1,18 @@
 
 import { MathUtils } from 'three'
 import Camera from '../components/Camera'
+import Pano from '../components/pano/Pano'
 import { normLng } from '../components/utils'
 import { CameraPosition } from '../Types'
+
 const config = require('../config.json');
 const controls = config.controls;
 
 enum TouchType { Touch, Zoom }
 
 export default class Controls{
+
+    pano: Pano
 
     camera: Camera
     canvas: HTMLCanvasElement
@@ -90,6 +94,10 @@ export default class Controls{
         this.canvas.addEventListener( 'mousewheel', this.onMouseWheelHandler )
 
         this.camera.lookAt(this.lat, this.lng)
+    }
+
+    setPano(p: Pano) {
+        this.pano = p;
     }
 
     setTween(tween: boolean){
@@ -290,12 +298,14 @@ export default class Controls{
 
     onFovChanged(){
         this.camera.setFov(this.fov)
-        this.canvas.dispatchEvent( new CustomEvent('fovChanged', {detail: { fov: this.fov }}) )
+        this.pano.onFovChanged({detail: { fov: this.fov }})
+        //this.canvas.dispatchEvent( new CustomEvent('fovChanged', {detail: { fov: this.fov }}) )
     }
 
     onPosChanged(){
         this.camera.lookAt(this.lat, this.lng)
-        this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
+        this.pano.onFovChanged({detail: { lat: this.lat, lng: this.lng }})
+        //this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
     }
 }
 

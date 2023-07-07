@@ -25,4 +25,11 @@ export default class Pano{
         return this.instance.get()
     }
 
+    onCameraMove(e: Object){
+        /* do nothing */
+    }
+
+    onFovChanged(e: Object){
+        /* do nothing */
+    }
 }

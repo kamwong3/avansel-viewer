@@ -19,8 +19,8 @@ class Multires {
             meshes: []
         };
         this.cube = createCube();
-        this.controls.canvas.addEventListener('cameraMove', this.onCameraMove.bind(this));
-        this.controls.canvas.addEventListener('fovChanged', this.onFovChanged.bind(this));
+        //this.controls.canvas.addEventListener( 'cameraMove', this.onCameraMove.bind(this) )
+        //this.controls.canvas.addEventListener( 'fovChanged', this.onFovChanged.bind(this) )
     }
     get() {
         return this.instance;
@@ -133,6 +133,12 @@ class Multires {
             }
         }
     }
+    // onCameraMove(e: Event){
+    //   this.updatePosition()
+    // }
+    // onFovChanged(e: Event){
+    //   this.updatePosition()
+    // }
     onCameraMove(e) {
         this.updatePosition();
     }

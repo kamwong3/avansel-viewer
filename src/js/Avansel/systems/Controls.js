@@ -40,6 +40,9 @@ export default class Controls {
         this.canvas.addEventListener('mousewheel', this.onMouseWheelHandler);
         this.camera.lookAt(this.lat, this.lng);
     }
+    setPano(p) {
+        this.pano = p;
+    }
     setTween(tween) {
         this.tween = tween;
     }
@@ -207,11 +210,13 @@ export default class Controls {
     }
     onFovChanged() {
         this.camera.setFov(this.fov);
-        this.canvas.dispatchEvent(new CustomEvent('fovChanged', { detail: { fov: this.fov } }));
+        this.pano.onFovChanged({ detail: { fov: this.fov } });
+        //this.canvas.dispatchEvent( new CustomEvent('fovChanged', {detail: { fov: this.fov }}) )
     }
     onPosChanged() {
         this.camera.lookAt(this.lat, this.lng);
-        this.canvas.dispatchEvent(new CustomEvent('cameraMove', { detail: { lat: this.lat, lng: this.lng } }));
+        this.pano.onFovChanged({ detail: { lat: this.lat, lng: this.lng } });
+        //this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
     }
 }
 //# sourceMappingURL=Controls.js.map

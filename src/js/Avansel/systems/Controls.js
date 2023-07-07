@@ -30,6 +30,8 @@ export default class Controls {
         this.init();
     }
     init() {
+        this.sphere = null;
+        this.multires = null;
         this.onTouchStartHandler = this.onTouchStart.bind(this);
         this.onClickHandler = this.onClick.bind(this);
         this.onMouseDownHandler = this.onMouseDown.bind(this);
@@ -40,9 +42,8 @@ export default class Controls {
         this.canvas.addEventListener('mousewheel', this.onMouseWheelHandler);
         this.camera.lookAt(this.lat, this.lng);
     }
-    setPano(p) {
-        this.pano = p;
-    }
+    setSphere(p) { this.sphere = p; }
+    setMultires(p) { this.multires = p; }
     setTween(tween) {
         this.tween = tween;
     }
@@ -210,12 +211,14 @@ export default class Controls {
     }
     onFovChanged() {
         this.camera.setFov(this.fov);
-        this.pano.onFovChanged({ detail: { fov: this.fov } });
+        if (this.multires)
+            this.multires.onFovChanged({ detail: { fov: this.fov } });
         //this.canvas.dispatchEvent( new CustomEvent('fovChanged', {detail: { fov: this.fov }}) )
     }
     onPosChanged() {
         this.camera.lookAt(this.lat, this.lng);
-        this.pano.onFovChanged({ detail: { lat: this.lat, lng: this.lng } });
+        if (this.multires)
+            this.multires.onCameraMove({ detail: { lat: this.lat, lng: this.lng } });
         //this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
     }
     setLatLng(lat, lng) {

@@ -15,11 +15,5 @@ export default class Pano {
     get() {
         return this.instance.get();
     }
-    onCameraMove(e) {
-        /* do nothing */
-    }
-    onFovChanged(e) {
-        /* do nothing */
-    }
 }
 //# sourceMappingURL=Pano.js.map

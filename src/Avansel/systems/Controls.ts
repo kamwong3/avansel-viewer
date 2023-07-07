@@ -210,11 +210,13 @@ export default class Controls{
 
         if(this.touchType == TouchType.Touch && e.type == 'touchmove'){
             var touch = touches[0]
-            this.lng = ( this.onMouseDownMouseX - touch.pageX ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLng;
-            this.lat = ( touch.pageY - this.onMouseDownMouseY ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLat;
-            this.latVector = this.lat
-            this.lngVector = this.lng
-            this.onPosChanged()
+            this.lngVector = ( this.onMouseDownMouseX - touch.pageX ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLng;
+            this.latVector = ( touch.pageY - this.onMouseDownMouseY ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLat;
+            if (!this.tween) {
+                this.lat = this.latVector;
+                this.lng = this.lngVector;
+                this.onPosChanged();
+            }
         }
 
         if(this.touchType == TouchType.Zoom && e.type == 'touchmove'){
@@ -267,12 +269,11 @@ export default class Controls{
     }
     
     onMouseMove(e: MouseEvent){
-        if(this.tween){
-            this.lngVector = ( this.onMouseDownMouseX - e.clientX ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLng
-            this.latVector = ( e.clientY - this.onMouseDownMouseY ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLat
-        }else{
-            this.lng = ( this.onMouseDownMouseX - e.clientX ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLng;
-            this.lat = ( e.clientY - this.onMouseDownMouseY ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLat;
+        this.lngVector = ( this.onMouseDownMouseX - e.clientX ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLng
+        this.latVector = ( e.clientY - this.onMouseDownMouseY ) * this.camera.get().fov * controls.moveFactor / this.canvas.clientWidth + this.onMouseDownLat
+        if(!this.tween){
+            this.lng = this.lngVector;
+            this.lat = this.latVector;
             this.onPosChanged()
         }
     }

@@ -218,5 +218,10 @@ export default class Controls {
         this.pano.onFovChanged({ detail: { lat: this.lat, lng: this.lng } });
         //this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
     }
+    setLatLng(lat, lng) {
+        this.latVector = this.lat = lat;
+        this.lngVector = this.lng = lng;
+        onPosChanged();
+    }
 }
 //# sourceMappingURL=Controls.js.map

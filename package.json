@@ -26,6 +26,8 @@
     "email": "roman@grinev.software"
   },
   "scripts": {
+    "compileJS": "tsc -p .",
+    "moveJS": "cd src && rm -rf js && mkdir js && mv ../build/Avansel js/.",
     "dev": "rollup -c ./utils/build/rollup.config.js -w",
     "build": "rollup -c ./utils/build/rollup.config.js",
     "start": "node app.js"

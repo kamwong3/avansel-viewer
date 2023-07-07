@@ -221,7 +221,7 @@ export default class Controls {
     setLatLng(lat, lng) {
         this.latVector = this.lat = lat;
         this.lngVector = this.lng = lng;
-        onPosChanged();
+        this.onPosChanged();
     }
 }
 //# sourceMappingURL=Controls.js.map

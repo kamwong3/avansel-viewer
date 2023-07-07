@@ -1,9 +1,11 @@
 
 import { MathUtils } from 'three'
 import Camera from '../components/Camera'
-import Pano from '../components/pano/Pano'
+import Sphere from '../components/pano/Sphere'
+import Multires from '../components/pano/Multires'
 import { normLng } from '../components/utils'
 import { CameraPosition } from '../Types'
+
 
 const config = require('../config.json');
 const controls = config.controls;
@@ -12,7 +14,8 @@ enum TouchType { Touch, Zoom }
 
 export default class Controls{
 
-    pano: Pano
+    sphere: Sphere
+    multires: Multires
 
     camera: Camera
     canvas: HTMLCanvasElement
@@ -83,6 +86,9 @@ export default class Controls{
 
     init(){
 
+        this.sphere = null;
+        this.multires = null;
+
         this.onTouchStartHandler = this.onTouchStart.bind(this)
         this.onClickHandler = this.onClick.bind(this)
         this.onMouseDownHandler = this.onMouseDown.bind(this)
@@ -96,9 +102,8 @@ export default class Controls{
         this.camera.lookAt(this.lat, this.lng)
     }
 
-    setPano(p: Pano) {
-        this.pano = p;
-    }
+    setSphere(p: Sphere) {  this.sphere = p; }
+    setMultires(p: Multires) {  this.multires = p; }
 
     setTween(tween: boolean){
         this.tween = tween
@@ -298,13 +303,13 @@ export default class Controls{
 
     onFovChanged(){
         this.camera.setFov(this.fov)
-        this.pano.onFovChanged({detail: { fov: this.fov }})
+        if (this.multires) this.multires.onFovChanged({detail: { fov: this.fov }})
         //this.canvas.dispatchEvent( new CustomEvent('fovChanged', {detail: { fov: this.fov }}) )
     }
 
     onPosChanged(){
         this.camera.lookAt(this.lat, this.lng)
-        this.pano.onFovChanged({detail: { lat: this.lat, lng: this.lng }})
+        if (this.multires) this.multires.onCameraMove({detail: { lat: this.lat, lng: this.lng }})
         //this.canvas.dispatchEvent(new CustomEvent('cameraMove', {detail: { lat: this.lat, lng: this.lng }}))
     }
 

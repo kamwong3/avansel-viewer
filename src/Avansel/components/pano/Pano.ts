@@ -24,4 +24,8 @@ export default class Pano{
     get(): Mesh|Group {
         return this.instance.get()
     }
+
+    getInstance(): Sphere|Multires { 
+        return this.instance;
+    }
 }

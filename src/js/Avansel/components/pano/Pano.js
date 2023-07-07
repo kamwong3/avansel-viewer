@@ -15,5 +15,8 @@ export default class Pano {
     get() {
         return this.instance.get();
     }
+    getInstance() {
+        return this.instance;
+    }
 }
 //# sourceMappingURL=Pano.js.map
